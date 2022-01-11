@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'core',
+    'users',
     'corsheaders'
 ]
 
@@ -72,6 +73,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'torreapi.wsgi.application'
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_AUTHENTICATION_CLASSES': ("auths.authentications.Authentication",),
+    # 'EXCEPTION_HANDLER': "auths.exception_handler.custom_exception_handler",
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer'
+    ]
+}
 
 
 # Database
@@ -123,6 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# For specific custom user mode
+
+AUTH_USER_MODEL = 'users.CustomUserModel'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
